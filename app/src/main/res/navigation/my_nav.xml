@@ -9,5 +9,19 @@
         android:id="@+id/productsListFragment"
         android:name="com.mohamedalaa4j.storeapp.presentation.scenes.productsList.ProductsListFragment"
         android:label="fragment_products_list"
-        tools:layout="@layout/fragment_products_list" />
+        tools:layout="@layout/fragment_products_list" >
+        <action
+            android:id="@+id/action_productsListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.mohamedalaa4j.storeapp.presentation.scenes.productDetails.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
+
+        <argument
+            android:name="productObject"
+            app:argType="com.mohamedalaa4j.storeapp.data.models.received.ProductsModel$ProductsModelItem" />
+    </fragment>
 </navigation>
