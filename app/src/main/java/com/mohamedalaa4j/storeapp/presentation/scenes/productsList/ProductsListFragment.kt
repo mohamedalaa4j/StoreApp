@@ -3,6 +3,7 @@ package com.mohamedalaa4j.storeapp.presentation.scenes.productsList
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -28,13 +29,20 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProductsListBinding.bind(view)
 
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.productsListStateFlow.collect {
-                checkProductsListState(it)
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                viewModel.productsListStateFlow.collect {
+                    checkProductsListState(it)
+                }
             }
-        }
 
         binding?.ivRefresh?.setOnClickListener { viewModel.getProductsList() }
+
+        //override onBackPressed for doubleTapToExit
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Utilities.doubleTapToExit(activity!!)
+            }
+        })
     }
 
     override fun onDestroy() {
@@ -74,6 +82,7 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         val adapter = RvAdapterProductsList(data) {
             findNavController().navigate(ProductsListFragmentDirections.actionProductsListFragmentToProductDetailsFragment(it))
         }
+
         //RecyclerView position state
         adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         binding?.rvProducts?.adapter = adapter

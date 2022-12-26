@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/productsListFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/productsListFragment"
@@ -23,5 +23,16 @@
         <argument
             android:name="productObject"
             app:argType="com.mohamedalaa4j.storeapp.data.models.received.ProductsModel$ProductsModelItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mohamedalaa4j.storeapp.presentation.scenes.splashScreen.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

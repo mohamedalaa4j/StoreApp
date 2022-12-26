@@ -8,7 +8,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_product_details.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_products_list.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2078125" />
+        <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.15" />
         <entry key="app/src/main/res/layout/rv_item_products_list.xml" value="0.2390625" />
       </map>
     </option>

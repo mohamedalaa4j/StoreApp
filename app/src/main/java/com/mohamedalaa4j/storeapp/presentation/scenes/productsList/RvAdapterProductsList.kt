@@ -16,8 +16,9 @@ class RvAdapterProductsList(
     class ViewHolder(binding: RvItemProductsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val imageView = binding.imageView
-        val textView = binding.textView
+        val ivProduct = binding.ivProduct
+        val tvTitle = binding.tvTitle
+        val tvPrice = binding.tvPrice
 
     }
 
@@ -33,9 +34,13 @@ class RvAdapterProductsList(
 
         val context = holder.itemView.context
 
-        holder.textView.text = item.title
+        holder.apply {
+            tvTitle.text = item.title
+            tvPrice.text = context.getString(R.string.price, item.price.toString())
+            Glide.with(context).load(item.image).error(R.drawable.no_image).into(ivProduct)
 
-        Glide.with(context).load(item.image).error(R.drawable.no_image).into(holder.imageView)
+        }
+
 
         holder.itemView.setOnClickListener {
             listener.invoke(item)
@@ -47,5 +52,4 @@ class RvAdapterProductsList(
     override fun getItemCount(): Int {
         return items.size
     }
-
 }

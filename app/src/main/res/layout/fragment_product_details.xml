@@ -31,6 +31,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:textColor="@color/white"
+                android:text="@string/app_name"
+                android:textSize="@dimen/_16ssp"
+                android:src="@drawable/ic_valu"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageView
                 android:id="@+id/ivBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
