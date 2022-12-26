@@ -16,15 +16,15 @@ class ProductsListVM @Inject constructor(private val getProductsListUseCase: Get
 
     private var _productsListStateFlow = MutableStateFlow<ScreenState<ProductsModel>>(ScreenState.InitialValue(null))
 
-    val productsListStateFlow : StateFlow<ScreenState<ProductsModel>>
-    get() = _productsListStateFlow
+    val productsListStateFlow: StateFlow<ScreenState<ProductsModel>>
+        get() = _productsListStateFlow
 
     init {
         viewModelScope.launch {
             _productsListStateFlow.emit(ScreenState.Loading(null))
 
             try {
-                _productsListStateFlow.emit(ScreenState.Success(getProductsListUseCase()!!))
+                _productsListStateFlow.emit(ScreenState.Success(getProductsListUseCase()))
             } catch (e: Exception) {
                 _productsListStateFlow.emit(ScreenState.Error(e.message.toString(), null))
             }

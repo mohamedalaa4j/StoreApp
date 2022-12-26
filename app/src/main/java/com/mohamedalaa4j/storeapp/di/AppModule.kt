@@ -23,6 +23,7 @@ object AppModule {
         return RetrofitObject.retrofit
     }
 
+
     // Dispatchers.IO
     @Singleton
     @Provides

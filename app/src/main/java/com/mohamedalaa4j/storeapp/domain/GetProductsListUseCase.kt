@@ -1,12 +1,8 @@
 package com.mohamedalaa4j.storeapp.domain
 
-import com.mohamedalaa4j.storeapp.data.Repository
 import com.mohamedalaa4j.storeapp.data.models.received.ProductsModel
-import javax.inject.Inject
 
-class GetProductsListUseCase@Inject constructor(private val repository: Repository) {
+interface GetProductsListUseCase {
 
-    suspend operator fun invoke(): ProductsModel? {
-        return repository.getProducts().body()
-    }
+    suspend operator fun invoke(): ProductsModel
 }

@@ -27,7 +27,7 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.productsListStateFlow.collect {
-                parseProductsListStateFlow(it)
+                checkProductsListState(it)
             }
         }
     }
@@ -37,7 +37,7 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         binding = null
     }
 
-    private fun parseProductsListStateFlow(screenState: ScreenState<ProductsModel>) {
+    private fun checkProductsListState(screenState: ScreenState<ProductsModel>) {
 
         when (screenState) {
 
@@ -50,7 +50,7 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
 
             is ScreenState.Success -> {
                     screenState.data?.let {
-                        setupProductsRV(it)
+                        setupProductsListRV(it)
                     }
 
                     Utilities.cancelProgressDialog()
@@ -63,10 +63,9 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         }
     }
 
-    private fun setupProductsRV(data: ProductsModel) {
+    private fun setupProductsListRV(data: ProductsModel) {
         binding?.rvProducts?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        // adapter
         val adapter = RvAdapterProductsList(data)
         binding?.rvProducts?.adapter = adapter
     }
