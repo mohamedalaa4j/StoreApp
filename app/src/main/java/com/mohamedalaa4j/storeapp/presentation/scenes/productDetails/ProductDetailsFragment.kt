@@ -17,8 +17,21 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProductDetailsBinding.bind(view)
 
+        bindTheProductViews()
+
+        binding?.ivBack?.setOnClickListener { activity?.onBackPressed() }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
+
+    private fun bindTheProductViews(){
         binding?.tvTitle?.text = args.productObject.title.toString()
+
         Glide.with(requireContext()).load(args.productObject.image.toString()).error(R.drawable.no_image).into(binding?.imageView!!)
+
         binding?.tvDescription?.text = args.productObject.description.toString()
 
         val rate = args.productObject.rating?.rate.toString()
@@ -26,11 +39,5 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
         val price = args.productObject.price.toString()
         binding?.tvPrice?.text = getString(R.string.price,price)
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding = null
     }
 }

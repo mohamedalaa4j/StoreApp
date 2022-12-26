@@ -19,7 +19,7 @@ class ProductsListVM @Inject constructor(private val getProductsListUseCase: Get
     val productsListStateFlow: StateFlow<ScreenState<ProductsModel>>
         get() = _productsListStateFlow
 
-    init {
+    fun getProductsList() {
         viewModelScope.launch {
             _productsListStateFlow.emit(ScreenState.Loading(null))
 
@@ -29,6 +29,10 @@ class ProductsListVM @Inject constructor(private val getProductsListUseCase: Get
                 _productsListStateFlow.emit(ScreenState.Error(e.message.toString(), null))
             }
         }
+    }
+
+    init {
+        getProductsList()
     }
 
 }
