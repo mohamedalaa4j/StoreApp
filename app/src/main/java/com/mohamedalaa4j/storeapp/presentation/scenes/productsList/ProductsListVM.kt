@@ -14,8 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductsListVM @Inject constructor(private val getProductsListUseCase: GetProductsListUseCase) : ViewModel() {
 
+    //for encapsulation
     private var _productsListStateFlow = MutableStateFlow<ScreenState<ProductsModel>>(ScreenState.InitialValue(null))
-
     val productsListStateFlow: StateFlow<ScreenState<ProductsModel>>
         get() = _productsListStateFlow
 
@@ -34,5 +34,4 @@ class ProductsListVM @Inject constructor(private val getProductsListUseCase: Get
     init {
         getProductsList()
     }
-
 }

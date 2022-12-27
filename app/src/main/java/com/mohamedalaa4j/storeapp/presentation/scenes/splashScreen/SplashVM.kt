@@ -11,12 +11,10 @@ import kotlinx.coroutines.launch
 class SplashVM : ViewModel() {
 
     private var _navigate = MutableStateFlow(false)
-
     val navigate: StateFlow<Boolean>
         get() = _navigate
 
     private fun delay() {
-
         Handler(Looper.getMainLooper()).postDelayed({
             viewModelScope.launch {
                 _navigate.emit(true)
@@ -24,7 +22,7 @@ class SplashVM : ViewModel() {
         }, 2000)
     }
 
-    fun navigationDone(){
+    fun navigationDone() {
         viewModelScope.launch {
             _navigate.emit(false)
         }
@@ -33,5 +31,4 @@ class SplashVM : ViewModel() {
     init {
         delay()
     }
-
 }

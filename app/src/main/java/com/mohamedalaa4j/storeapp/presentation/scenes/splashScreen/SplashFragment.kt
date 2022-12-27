@@ -29,9 +29,9 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        //to avoid memory leak
         binding = null
     }
-
 }

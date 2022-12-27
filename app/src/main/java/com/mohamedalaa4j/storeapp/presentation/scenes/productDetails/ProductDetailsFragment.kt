@@ -22,8 +22,9 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
         binding?.ivBack?.setOnClickListener { activity?.onBackPressed() }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        //to avoid memory leak
         binding = null
     }
 
@@ -38,6 +39,6 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
         binding?.ratingBar?.rating = rate.toFloat()
 
         val price = args.productObject.price.toString()
-        binding?.tvPrice?.text = getString(R.string.price,price)
+        binding?.tvPriceValue?.text = getString(R.string.price,price)
     }
 }

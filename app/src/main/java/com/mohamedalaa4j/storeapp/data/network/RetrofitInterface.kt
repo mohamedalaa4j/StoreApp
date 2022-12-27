@@ -9,5 +9,4 @@ interface RetrofitInterface {
 
     @GET(PRODUCTS_ENDPOINT)
     suspend fun getProducts(): Response<ProductsModel>
-
 }

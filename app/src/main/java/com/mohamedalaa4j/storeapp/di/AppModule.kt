@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    // Retrofit Module
+    // Retrofit Provider
     @Singleton
     @Provides
     fun providesRetrofit(): RetrofitInterface {
@@ -24,14 +24,14 @@ object AppModule {
     }
 
 
-    // Dispatchers.IO
+    // Dispatchers.IO Provider
     @Singleton
     @Provides
     fun provideIoDispatcher( ): CoroutineDispatcher {
         return Dispatchers.IO
     }
 
-    // ApplicationContext
+    // ApplicationContext Provider
     @Singleton
     @Provides
     fun provideContext(@ApplicationContext context: Context): Context {

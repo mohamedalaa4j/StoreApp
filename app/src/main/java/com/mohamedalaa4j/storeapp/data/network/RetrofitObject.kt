@@ -17,5 +17,4 @@ object RetrofitObject {
     val retrofit: RetrofitInterface by lazy {
         retrofitInitialization.create(RetrofitInterface::class.java)
     }
-
 }

@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class InterfacesImplModule {
 
-    //Repository
+    //Repository Provider
     @Binds
     abstract fun bindRepository(
         repositoryImpl: RepositoryImpl

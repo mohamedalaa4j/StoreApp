@@ -11,5 +11,4 @@ class RepositoryImpl @Inject constructor(
 ) : Repository {
 
     override suspend fun getProducts() = withContext(ioDispatcher) { retrofitInterface.getProducts() }
-
 }

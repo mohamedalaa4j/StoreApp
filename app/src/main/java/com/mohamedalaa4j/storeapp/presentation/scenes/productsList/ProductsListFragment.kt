@@ -29,6 +29,7 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProductsListBinding.bind(view)
 
+        //to make StateFlow aware of Lifecycle of the MainActivity
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.productsListStateFlow.collect {
                     checkProductsListState(it)
@@ -45,15 +46,15 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        //to avoid memory leak
         binding = null
     }
 
     private fun checkProductsListState(screenState: ScreenState<ProductsModel>) {
 
         when (screenState) {
-
             is ScreenState.InitialValue -> {
             }
 
@@ -88,5 +89,4 @@ class ProductsListFragment : Fragment(R.layout.fragment_products_list) {
         binding?.rvProducts?.adapter = adapter
 
     }
-
 }
